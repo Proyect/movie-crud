@@ -35,31 +35,27 @@ function LoginPage() {
 
   return (
     <div className="col-md-6 mx-auto">
-      <h2>Login</h2>
-      {error && <Alert variant="danger">{error}</Alert>}
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">Username</label>
-          <input
-            type="text"
-            className="form-control"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+      <div className="container text-center">
+            <div className="card p-2 m-2" style="width: 18rem;">
+                <div className="card-body">
+                    <form action="">
+                      <h2 className="card-title">Login</h2>
+                     <div className="mb-3">
+                        <label  className="form-label">Correo</label>
+                        <input type="email" className="form-control" id="email" required/>
+                                               
+                      </div>
+                      <div className="mb-3">
+                        <label  className="form-label">Password</label>
+                        <input type="password" className="form-control" id="password" required/>
+                        
+                      </div> 
+                      <button className="btn btn-primary w-75" type="submit">Login</button> 
+                    </form>
+                    
+                </div>
+            </div>
         </div>
-        <div className="mb-3">
-          <label className="form-label">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">Login</button>
-      </form>
       <p className="mt-3">
         Don't have an account? <Link to="/register">Register here</Link>
       </p>
