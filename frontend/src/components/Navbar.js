@@ -14,21 +14,43 @@ function Navbar() {
   return (
     
 <div className="container-fluid">
-            <div className="row navbar-brand">
-              <div className="col navbar-text">
-                <a href="" className="nav-link text-dark"><p className="fs-1 fw-bold">Peliculas</p></a>
-              </div>
-              <div className="col navbar-text text-end">
-                <ul className="nav justify-content-end">
+<div className="row navbar-brand">
+            <div className="col navbar-text">
+              <Link href="" className="nav-link text-dark"><p className="fs-1 fw-bold">Peliculas</p></Link>
+            </div>
+            <div className="col navbar-text text-end">
+              <ul className="nav justify-content-end">
+              {isAuthenticated ? (
+              <>
+              Welcome, {user?.username || 'User'}!
+              
+                <li className="nav-item">
+                  <link className="nav-link text-dark" href="#">Todas las peliculas</link>
+                </li>
+                <li className="nav-item">
+                  <Link className="nav-link text-dark" href="#">Agregar pelicula</Link>
+                </li>
+                <li className="nav-item text-dark">
+                  <Link className="nav-link" href="#" onClick={handleLogout}>Logout</Link>
+                </li>                
+               
+              </>
+               ) : (
+                <>
                   <li className="nav-item">
                     <Link className="nav-link text-dark" href="#">Login</Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link text-dark" href="#">Registro</Link>
-                  </li>                                
-                </ul>
-              </div>
+                  </li>  
+
+                </>
+              )} 
+              
+                                                
+                  </ul>
             </div>
+          </div> 
           </div>
   );
 }
