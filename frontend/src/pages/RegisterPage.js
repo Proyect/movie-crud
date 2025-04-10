@@ -1,14 +1,13 @@
-// ... (imports similares a LoginPage)
-
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; 
+//import Alert from 'react-bootstrap/Alert';
+import React, { useState } from 'react'; 
+import { useNavigate, Link } from 'react-router-dom'; // Añade useNavigate
 import { useAuth } from '../contexts/AuthContext';
 import apiClient from '../services/api';
-import Alert from 'react-bootstrap/Alert';
+
 
 
 function RegisterPage() {
-   // const [username, setUsername] = useState('');
+    
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -22,7 +21,7 @@ function RegisterPage() {
         e.preventDefault();
         setErrors({}); // Clear previous errors
 
-        const userData = {  email, first_name: firstName, last_name: lastName, password, password2 };
+        const userData = { email, first_name: firstName, last_name: lastName, password, password2 };
 
         try {
             const response = await apiClient.post('register/', userData);
@@ -53,48 +52,49 @@ function RegisterPage() {
                       
                       <div className="mb-3">
                         <label  className="form-label">Nombre</label>
-                        <input type="text" className="form-control" id="firstName" name="firstName"
+                        <input type="text" className="form-control" id="name" 
                         value={firstName}
-                        onChange={(e) => { setFirstName(e.target.value); setErrors(p => ({...p, first_name: null})); }} 
+                     
+                        isInvalid={!!errors.first_name}
                         />                        
                       </div>
                       
                       <div className="mb-3">
                         <label  className="form-label">Apellido</label>
-                        <input type="text" className="form-control" id="lastName" 
-                         value={lastName}
-                         onChange={(e) => { setLastName(e.target.value); setErrors(p => ({...p, last_name: null})); }}
-                        />   
-                        {errors.last_name && <div className="invalid-feedback">{errors.last_name.join(', ')}</div>}                      </div>
+                        <input type="email" className="form-control" id="lastName" 
+                        value={lastName}
+                      
+                        isInvalid={!!errors.last_name}
+                        />                        
+                      </div>
                       
                      <div className="mb-3">
                         <label  className="form-label">Correo</label>
-                        <input type="email" className="form-control" id="email" 
-                        value={email}
-                        onChange={(e) => { setEmail(e.target.value); setErrors(p => ({...p, email: null})); }}
-                        required/> 
-                        {errors.email && <div className="invalid-feedback">{errors.email.join(', ')}</div>}                       
+                        <input type="email" className="form-control" id="email" value={email} 
+                        
+                      isInvalid={!!errors.email} />                        
                       </div>
 
                       <div className="mb-3">
                         <label className="form-label">Contraseña</label>
-                        <input type="password" className="form-control" id="password" name="password"
+                        <input type="password" className="form-control" id="password" 
                         value={password}
-                        onChange={(e) => { setPassword(e.target.value); setErrors(p => ({...p, password: null})); }}
-                        required />
-                        {errors.password && <div className="invalid-feedback">{errors.password.join(', ')}</div>}
+                        
+                        isInvalid={!!errors.password}
+                        />
                       </div>
 
                       <div className="mb-3">
                         <label className="form-label">Confirmar Contraseña</label>
-                        <input type="password" className="form-control" id="password2" name="password2"
+                        <input type="password" className="form-control" id="password2" 
                         value={password2}
-                        onChange={(e) => { setPassword2(e.target.value); setErrors(p => ({...p, password2: null})); }}
-                        required />
-                        {errors.password2 && <div className="invalid-feedback">{errors.password2.join(', ')}</div>}
+                       
+                        isInvalid={!!errors.password2} 
+                        />
                       </div> 
-
-                      <button className="btn btn-primary w-75" type="submit">Registro</button> 
+                      <button className="btn btn-primary w-75" type="submit">
+                        Registrar
+                        </button> 
                     </form>
                     
                 </div>
@@ -102,7 +102,7 @@ function RegisterPage() {
 
         </div>
              <p className="mt-3">
-                Already have an account? <Link to="/login">Login here</Link>
+                Tienes Una Cuenta? <Link to="/login">Login </Link>
              </p>
         </div>
     );

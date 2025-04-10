@@ -4,6 +4,7 @@ import { useAuth } from '../contexts/AuthContext';
 import apiClient from '../services/api';
 import Alert from 'react-bootstrap/Alert'; // Para mostrar errores
 
+
 function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -38,17 +39,19 @@ function LoginPage() {
       <div className="container text-center">
             <div className="card p-2 m-2" style={{width: '18rem'}}>
                 <div className="card-body">
-                    <form action="">
+                    <form onSubmit={handleSubmit}>
                       <h2 className="card-title">Login</h2>
                      <div className="mb-3">
                         <label  className="form-label">Correo</label>
-                        <input type="email" className="form-control" id="email" required/>
+                        <input type="email" className="form-control" id="email" value={username} 
+                        onChange={(e) => { setUsername(e.target.value); setError(''); }} required/>
                                                
                       </div>
                       <div className="mb-3">
                         <label  className="form-label">Password</label>
-                        <input type="password" className="form-control" id="password" required/>
-                        
+                        <input type="password" className="form-control" id="password" value={password} 
+                        onChange={(e) => { setPassword(e.target.value); setError(''); }} required/>
+                        {error && <Alert variant="danger">{error}</Alert>}
                       </div> 
                       <button className="btn btn-primary w-75" type="submit">Login</button> 
                     </form>
@@ -57,7 +60,7 @@ function LoginPage() {
             </div>
         </div>
       <p className="mt-3">
-        Don't have an account? <Link to="/register">Register here</Link>
+        ¿Quieres registrarte? <Link to="/register">Registrarte</Link>
       </p>
     </div>
   );

@@ -7,6 +7,7 @@ import apiClient from '../services/api';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner';
+import Button from 'react-bootstrap/Button';
 
 function AddReviewPage() {
   const { id: movieId } = useParams(); // Obtiene el 'id' de la película de la URL
