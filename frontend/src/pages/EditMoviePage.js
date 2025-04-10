@@ -7,6 +7,7 @@ import apiClient from '../services/api';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
 import Spinner from 'react-bootstrap/Spinner'; // Para indicar carga inicial
+import Button from 'react-bootstrap/Button';
 
 function EditMoviePage() {
   const { id } = useParams(); // Obtiene el 'id' de la URL (definido en App.js como /movies/:id/edit)
