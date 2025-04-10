@@ -36,7 +36,7 @@ function LoginPage() {
   return (
     <div className="col-md-6 mx-auto">
       <div className="container text-center">
-            <div className="card p-2 m-2" style="width: 18rem;">
+            <div className="card p-2 m-2" style={{width: '18rem'}}>
                 <div className="card-body">
                     <form action="">
                       <h2 className="card-title">Login</h2>

@@ -10,7 +10,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'username', 'email', 'first_name', 'last_name', 'password', 'password2')
+        fields = ('id', 'email', 'first_name', 'last_name', 'password', 'password2')
         extra_kwargs = {
             'first_name': {'required': True},
             'last_name': {'required': True},
@@ -22,14 +22,11 @@ class UserSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"password": "Password fields didn't match."})
         # Puedes añadir validación de email único aquí si quieres, aunque el modelo ya lo hace.
         if User.objects.filter(email=attrs['email']).exists():
-             raise serializers.ValidationError({"email": "Email already exists."})
-        if User.objects.filter(username=attrs['username']).exists():
-             raise serializers.ValidationError({"username": "Username already exists."})
+             raise serializers.ValidationError({"email": "Email already exists."})        
         return attrs
 
     def create(self, validated_data):
         user = User.objects.create(
-            username=validated_data['username'],
             email=validated_data['email'],
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name']
@@ -45,7 +42,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = ('id', 'user', 'rating', 'comment', 'created_at', 'movie') # Incluir movie es útil para el contexto, pero a menudo se omite si está en la URL
+        fields = ('id', 'user', 'rating', 'comment', 'created_by', 'movie') # Incluir movie es útil para el contexto, pero a menudo se omite si está en la URL
         read_only_fields = ('movie', 'user') # El usuario y la película se asignan en la vista
 
     def validate_rating(self, value):
@@ -79,7 +76,7 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = [
             'id', 'title', 'director', 'release_date', 'description', 'image_url',
-            'created_by', 'created_by_username', 'created_at', 'updated_at',
+            'created_by', 'created_by_username', 'updated_at',
             'reviews', 'average_rating' # Campos Oro
         ]
         # El usuario se asigna automáticamente en la vista al crear/actualizar

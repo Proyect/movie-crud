@@ -27,7 +27,7 @@ class RegisterView(generics.CreateAPIView):
 
 # ViewSet para CRUD de Películas
 class MovieViewSet(viewsets.ModelViewSet):
-    queryset = Movie.objects.all().order_by('-created_at') # Obtener todas las películas, más nuevas primero
+    queryset = Movie.objects.all().order_by('-created_by') # Obtener todas las películas, más nuevas primero
     serializer_class = MovieSerializer
     # Permisos: Necesita estar logueado para crear/editar/borrar. Cualquiera puede leer (lista/detalle).
     # Ajusta esto si *todas* las vistas (incluyendo GET) deben estar protegidas.
