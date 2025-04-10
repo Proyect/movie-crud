@@ -4,7 +4,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext'; // Crearemos este contexto
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importar Bootstrap CSS
-import './index.css'; // Tu CSS personalizado si lo tienes
+import './index.css'; 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
