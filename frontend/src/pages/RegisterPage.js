@@ -51,7 +51,7 @@ function RegisterPage() {
         }
 
          //user sea igual al mail
-        const userData = {username, email, first_name: firstName, last_name: lastName, password, password2 };
+        const userData = {username: email, email, first_name: firstName, last_name: lastName, password, password2 };
 
         try {
             const response = await apiClient.post('register/', userData);
