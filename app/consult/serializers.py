@@ -76,7 +76,7 @@ class MovieSerializer(serializers.ModelSerializer):
         model = Movie
         fields = [
             'id', 'title', 'director', 'release_date', 'description', 'image_url',
-            'created_by', 'created_by_username', 'updated_at',
+            'created_by', 'created_by_username', 'created_at',
             'reviews', 'average_rating' # Campos Oro
         ]
         # El usuario se asigna automáticamente en la vista al crear/actualizar

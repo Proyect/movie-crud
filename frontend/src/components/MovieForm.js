@@ -72,12 +72,8 @@ function MovieForm({ onSubmit, onSuccess, initialData = null, isEditing = false,
     setSubmitError(null); // Limpiar errores generales previos
 
     try {
-      // Llamar a la función onSubmit pasada como prop (será handleCreateMovie o handleUpdateMovie)
-      // Esta función contiene la llamada real a apiClient (POST o PUT)
       const response = await onSubmit(formData);
 
-      // Si la función onSubmit fue exitosa (no lanzó error),
-      // llamar a la función onSuccess pasada como prop (generalmente para navegar)
       if (onSuccess) {
         onSuccess(response.data); // Pasar los datos de respuesta (la película creada/actualizada)
       }

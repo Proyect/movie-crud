@@ -21,19 +21,20 @@ function Navbar() {
             <div className="col navbar-text text-end">
               <ul className="nav justify-content-end">
               {isAuthenticated ? (
-              <>
-              Welcome, {user?.username || 'User'}!
+              <>               
               
                 <li className="nav-item">
-                  <link className="nav-link text-dark" href="#">Todas las peliculas</link>
+                  <Link className="nav-link text-dark" href="/">Todas las peliculas</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-dark" href="#">Agregar pelicula</Link>
+                  <Link className="nav-link text-dark" href="movies/new">Agregar pelicula</Link>
                 </li>
                 <li className="nav-item text-dark">
                   <Link className="nav-link" href="#" onClick={handleLogout}>Logout</Link>
                 </li>                
-               
+                <li className="nav-item">
+                  {user?.username || 'Usuario'}!
+                </li>
               </>
                ) : (
                 <>
