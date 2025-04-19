@@ -10,7 +10,7 @@ import Alert from 'react-bootstrap/Alert';
 function RegisterPage() {
     // --- Estados ---   
     const [email, setEmail] = useState('');
-    const username = email;
+    //const username = email;
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [password, setPassword] = useState('');
