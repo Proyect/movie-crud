@@ -109,7 +109,7 @@ function MovieDetailPage() {
 
             {/* --- ORO: Botón Escribir Reseña Condicional --- */}
             {isAuthenticated && !isOwner && !userHasReviewed && ( // Solo si está logueado, NO es el dueño Y NO ha reseñado
-                <Link to={`/movies/${id}/reviews/new`} className="btn btn-success">Write a Review</Link>
+                <Link to={`/movies/${id}/reviews/new`} className="btn btn-success">Escribe una reseña</Link>
             )}
              {/* --- FIN ORO --- */}
         </div>

@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 *.log
 *.sqlite3
+node_modules

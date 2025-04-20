@@ -16,7 +16,7 @@ function Navbar() {
 <div className="container-fluid">
 <div className="row navbar-brand">
             <div className="col navbar-text">
-              <Link href="" className="nav-link text-dark"><p className="fs-1 fw-bold">Peliculas</p></Link>
+              <Link to="" className="nav-link text-dark"><p className="fs-1 fw-bold">Peliculas</p></Link>
             </div>
             <div className="col navbar-text text-end">
               <ul className="nav justify-content-end">
@@ -24,25 +24,25 @@ function Navbar() {
               <>               
               
                 <li className="nav-item">
-                  <Link className="nav-link text-dark" href="/">Todas las peliculas</Link>
+                  <Link className="nav-link text-dark" to="/">Todas las peliculas</Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link text-dark" href="movies/new">Agregar pelicula</Link>
+                  <Link className="nav-link text-dark" to="movies/new">Agregar pelicula</Link>
                 </li>
                 <li className="nav-item text-dark">
-                  <Link className="nav-link" href="#" onClick={handleLogout}>Logout</Link>
+                  <Link className="nav-link" to="#" onClick={handleLogout}>Logout</Link>
                 </li>                
                 <li className="nav-item">
-                  {user?.username || 'Usuario'}!
+                  {user?.username || ''}!
                 </li>
               </>
                ) : (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link text-dark" href="#">Login</Link>
+                    <Link className="nav-link text-dark" to="/login">Login</Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link text-dark" href="#">Registro</Link>
+                    <Link className="nav-link text-dark" to="/register">Registro</Link>
                   </li>  
 
                 </>

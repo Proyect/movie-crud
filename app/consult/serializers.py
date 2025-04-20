@@ -32,7 +32,7 @@ class UserSerializer(serializers.ModelSerializer):
             first_name=validated_data['first_name'],
             last_name=validated_data['last_name']
         )
-        # Usa set_password para hashear correctamente con BCrypt (configurado en settings.py)
+        # Usa set_password para hashear correctamente con BCrypt 
         user.set_password(validated_data['password'])
         user.save()
         return user
@@ -43,7 +43,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = ('id', 'user', 'rating', 'comment', 'created_by', 'movie') # Incluir movie es útil para el contexto, pero a menudo se omite si está en la URL
+        fields = ('id', 'user', 'rating', 'comment', 'created_at', 'movie')
         read_only_fields = ('movie', 'user') # El usuario y la película se asignan en la vista
 
     def validate_rating(self, value):
@@ -51,8 +51,7 @@ class ReviewSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Rating must be between 1 and 5.")
         return value
 
-    def validate(self, data):
-         # Validar que el usuario no haya reseñado ya esta película (aunque unique_together lo hace en DB)
+    def validate(self, data):       
          # Se necesita el contexto de la vista para obtener movie y user
          request = self.context.get('request')
          movie = self.context.get('movie')
@@ -60,7 +59,7 @@ class ReviewSerializer(serializers.ModelSerializer):
              if Review.objects.filter(movie=movie, user=request.user).exists():
                  # Si es una actualización (PUT/PATCH), se permite. Si es creación (POST), no.
                  if request.method == 'POST':
-                     raise serializers.ValidationError("You have already reviewed this movie.")
+                    raise serializers.ValidationError("Ya publicaste un comentario.")
          return data
 
 # --- FIN SECCIÓN ORO ---
@@ -97,4 +96,4 @@ class MovieSerializer(serializers.ModelSerializer):
         if len(value) < 2:
             raise serializers.ValidationError("Title must be at least 2 characters long.")
         return value
-    # Añade más validaciones para director, release_date, etc.
+   
