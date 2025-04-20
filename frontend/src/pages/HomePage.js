@@ -53,7 +53,7 @@ function HomePage() {
     <div>
       <h1>Movies</h1>
       {error && <Alert variant="danger">{error}</Alert>}
-      <Link to="/movies/new" className="btn btn-primary mb-3">Add New Movie</Link>
+      <Link to="/movies/new" className="btn btn-primary mb-3">Agregar Nueva Pelicula</Link>
       <div className="row">
         {movies.length > 0 ? (
           movies.map((movie) => (
@@ -71,7 +71,7 @@ function HomePage() {
                       </p>
                   )}
                   {/* --- FIN ORO --- */}
-                  <Link to={`/movies/${movie.id}`} className="btn btn-info btn-sm me-2">View Details</Link>
+                  <Link to={`/movies/${movie.id}`} className="btn btn-info btn-sm me-2">Detalles</Link>
                   {/* --- SOLO PARA ORO: Botón Eliminar Condicional --- */}
                   {user && user.id === movie.created_by && (
                        <button onClick={() => handleDelete(movie.id)} className="btn btn-danger btn-sm">Delete</button>

@@ -95,7 +95,7 @@ function MovieForm({ onSubmit, onSuccess, initialData = null, isEditing = false,
 
   return (
     <Form onSubmit={handleSubmit} noValidate> {/* noValidate evita validaciones HTML5 por defecto */}
-      <h2 className="mb-4">{isEditing ? 'Edit Movie' : 'Add New Movie'}</h2>
+      <h2 className="mb-4">{isEditing ? 'Editar Pelicula' : 'Agregar Nueva Pelicula'}</h2>
 
       {/* Mostrar error general si existe */}
       {submitError && <Alert variant="danger">{submitError}</Alert>}
@@ -106,7 +106,7 @@ function MovieForm({ onSubmit, onSuccess, initialData = null, isEditing = false,
 
       {/* Campo Title */}
       <Form.Group className="mb-3" controlId="formMovieTitle">
-        <Form.Label>Title</Form.Label>
+        <Form.Label>Titulo</Form.Label>
         <Form.Control
           type="text"
           name="title"
@@ -139,7 +139,7 @@ function MovieForm({ onSubmit, onSuccess, initialData = null, isEditing = false,
 
       {/* Campo Release Date */}
       <Form.Group className="mb-3" controlId="formMovieReleaseDate">
-        <Form.Label>Release Date</Form.Label>
+        <Form.Label>Fecha de Lanzamiento</Form.Label>
         <Form.Control
           type="date"
           name="release_date"
@@ -155,7 +155,7 @@ function MovieForm({ onSubmit, onSuccess, initialData = null, isEditing = false,
 
       {/* Campo Description */}
       <Form.Group className="mb-3" controlId="formMovieDescription">
-        <Form.Label>Description</Form.Label>
+        <Form.Label>Descripcion</Form.Label>
         <Form.Control
           as="textarea"
           rows={4}
@@ -172,7 +172,7 @@ function MovieForm({ onSubmit, onSuccess, initialData = null, isEditing = false,
 
       {/* Campo Image URL */}
       <Form.Group className="mb-3" controlId="formMovieImageUrl">
-        <Form.Label>Image URL</Form.Label>
+        <Form.Label>Imagen URL</Form.Label>
         <Form.Control
           type="url"
           name="image_url"
@@ -186,7 +186,7 @@ function MovieForm({ onSubmit, onSuccess, initialData = null, isEditing = false,
           {errors.image_url?.join(', ')}
         </Form.Control.Feedback>
         <Form.Text className="text-muted">
-            Optional. Must be a valid URL (e.g., https://...).
+            Optional. Agregar la direccion web (e.g., https://...).
         </Form.Text>
       </Form.Group>
 
@@ -211,10 +211,10 @@ function MovieForm({ onSubmit, onSuccess, initialData = null, isEditing = false,
                   aria-hidden="true"
                   className="me-1"
                 />
-                {isEditing ? 'Updating...' : 'Adding...'}
+                {isEditing ? 'Actualizando...' : 'Agregando...'}
               </>
             ) : ( // Mostrar texto normal si no está cargando
-              isEditing ? 'Update Movie' : 'Add Movie'
+              isEditing ? 'Actualizar Pelicula' : 'Agregar Pelicula'
             )}
           </Button>
       </div>

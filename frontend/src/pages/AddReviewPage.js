@@ -1,8 +1,8 @@
-// src/pages/AddReviewPage.js
 
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import ReviewForm from '../components/ReviewForm'; // Usamos el nuevo formulario
+
+import ReviewForm from '../components/ReviewForm'; 
 import apiClient from '../services/api';
 import Container from 'react-bootstrap/Container';
 import Alert from 'react-bootstrap/Alert';
@@ -41,11 +41,6 @@ function AddReviewPage() {
     }, [movieId]);
 
 
-  /**
-   * Función para manejar el envío de la reseña. Se pasa a ReviewForm.
-   * @param {object} reviewData - { rating, comment }
-   * @returns {Promise}
-   */
   const handleAddReview = async (reviewData) => {
      setSubmitError(null);
     // ReviewForm maneja el estado de carga y errores de validación específicos.

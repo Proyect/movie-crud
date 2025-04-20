@@ -43,7 +43,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Review
-        fields = ('id', 'user', 'rating', 'comment', 'created_by', 'movie')
+        fields = ('id', 'user', 'rating', 'comment', 'created_at', 'movie')
         read_only_fields = ('movie', 'user') # El usuario y la película se asignan en la vista
 
     def validate_rating(self, value):
@@ -96,4 +96,4 @@ class MovieSerializer(serializers.ModelSerializer):
         if len(value) < 2:
             raise serializers.ValidationError("Title must be at least 2 characters long.")
         return value
-    # Añade más validaciones para director, release_date, etc.
+   

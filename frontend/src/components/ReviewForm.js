@@ -1,4 +1,3 @@
-// src/components/ReviewForm.js
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types'; // Para definir los tipos de las props
@@ -12,16 +11,11 @@ import Spinner from 'react-bootstrap/Spinner';
 
 function ReviewForm({ movieTitle, onSubmit, onSuccess, onCancel, initialData = null, isEditing = false }) {
   // --- Estados ---
-  // Estado para el rating (calificación). Iniciamos vacío o con datos iniciales.
-  const [rating, setRating] = useState(initialData?.rating || '');
-  // Estado para el comentario. Iniciamos vacío o con datos iniciales.
-  const [comment, setComment] = useState(initialData?.comment || '');
-  // Estado para errores de validación (objeto)
-  const [errors, setErrors] = useState({});
-  // Estado para indicar carga
-  const [loading, setLoading] = useState(false);
-  // Estado para errores generales del envío
-  const [submitError, setSubmitError] = useState(null);
+   const [rating, setRating] = useState(initialData?.rating || ''); 
+   const [comment, setComment] = useState(initialData?.comment || '');  
+   const [errors, setErrors] = useState({});
+   const [loading, setLoading] = useState(false);
+   const [submitError, setSubmitError] = useState(null);
 
   // --- Manejador de Envío ---
   const handleSubmit = async (e) => {
@@ -105,7 +99,7 @@ function ReviewForm({ movieTitle, onSubmit, onSuccess, onCancel, initialData = n
     //   <Card.Body>
         <Form onSubmit={handleSubmit} noValidate>
           {/* Título - Usa el movieTitle pasado por props */}
-          <h3>{isEditing ? 'Edit Review' : `Write a Review for ${movieTitle || 'this movie'}`}</h3>
+          <h3>{isEditing ? 'Editar una reseña' : `Escribir una reseña ${movieTitle || 'this movie'}`}</h3>
           <hr />
 
           {/* Mostrar errores generales o de validación no asociados a campos */}
