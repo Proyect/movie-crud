@@ -72,7 +72,9 @@ class ReviewListCreateView(generics.ListCreateAPIView):
         # Validar que el usuario no haya reseñado ya (aunque el serializer y unique_together también ayudan)
         if Review.objects.filter(movie=movie, user=self.request.user).exists():
              raise serializers.ValidationError("You have already reviewed this movie.")
-
+        #validar que el usuario no valide su propia pelicula
+        if movie.created_by == self.request.user:
+            raise serializers.ValidationError("No puedes comentar tu propia publicacion.")
         serializer.save(user=self.request.user, movie=movie)
 
     # Pasar contexto al serializer para validación 'unique_together' si es necesario

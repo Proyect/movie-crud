@@ -12,7 +12,7 @@ class Movie(models.Model):
     image_url = models.URLField(max_length=500, blank=True, null=True) # O usa ImageField si subes archivos
     created_by = models.ForeignKey(User, related_name='movies', on_delete=models.CASCADE)    
     created_at = models.DateTimeField(auto_now_add=True)
-    #updated_at = models.DateTimeField(auto_now=True) 
+    updated_at = models.DateTimeField(auto_now=True) 
     
     def __str__(self):
         return self.title
